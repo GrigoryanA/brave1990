@@ -1,123 +1,64 @@
+//Task 2
 
-/*
-Задача 10: Напишите программу, которая принимает на вход трёхзначное число и на выходе показывает вторую цифру этого числа.
-456 -> 5
-782 -> 8
-918 -> 1
+double LineLength(double x1, double y1, double z1, double x2, double y2, double z2)
+{
+    double line1Length = x2 - x1;
+    double line2Length = y2 - y1;
+    double line3Length = z2 - z1;
+    double result = Math.Sqrt(Math.Pow(line1Length, 2) + Math.Pow(line2Length, 2) + Math.Pow(line3Length, 2));
+    return result;
+}
+
+Console.Write("Введите координату Х первой точки: ");
+double x1 = Convert.ToDouble(Console.ReadLine());
+Console.Write("Введите координату Y первой точки: ");
+double y1 = Convert.ToDouble(Console.ReadLine());
+Console.Write("Введите координату Z первой точки: ");
+double z1 = Convert.ToDouble(Console.ReadLine());
+Console.Write("Введите координату Х второй точки: ");
+double x2 = Convert.ToDouble(Console.ReadLine());
+Console.Write("Введите координату Y второй точки: ");
+double y2 = Convert.ToDouble(Console.ReadLine());
+Console.Write("Введите координату Z второй точки: ");
+double z2 = Convert.ToDouble(Console.ReadLine());
+
+Console.WriteLine("Длина отрезка: " + Math.Round(LineLength(x1,y1,z1,x2,y2,z2), 2));
+
+//Task 3
+/* bool IsPalindrome(int number)
+{
+    int number1 = number, number2 = 0;
+    while(number1 > 0)
+    {
+        number2 = number2 * 10 + number1 % 10;
+        number1 /= 10;
+    }
+    return number2 == number;
+}
+
+Console.Write("Enter N: ");
+int num = Convert.ToInt32(Console.ReadLine());
+Console.WriteLine($"Число {num} " + (IsPalindrome(num) ? "": "не ") + "является палиндромом.");
 */
 
-int number = ReadInt("Введите трехзначное число: ");
-int amount = number.ToString().Length;
-
-if (amount < 3 || amount > 3)
-{
-    Console.WriteLine("Вы ввели не трехзначное число");
-}
-else
-{
-    Console.WriteLine(InCenter(number));
-}
 
 
 
-// ФУНКЦИИ------------------------------------------------------------------------------------------------------
 
-// Функция принимает сообщение для отображения в консоли, и выводит результат введенных данных пользователем. 
-int ReadInt(string message)
-{
-    Console.Write(message);
-    return Convert.ToInt32(Console.ReadLine());
-}
-
-// Функция вывода цифры стоящей в середине трехзначногно числа.
-int InCenter(int a)
-{
-    
-    int result = ((a / 10) % 10);
-    return ча 13
-/*
-Задача 13: Напишите программу, которая выводит третью цифру заданного числа или сообщает, что третьей цифры нет.
-645 -> 5
-// 78 -> третьей цифры нет
-// 32679 -> 6
-*/
+/* Задача 23
+Напишите программу, которая принимает на вход число (N) и выдаёт таблицу кубов чисел от 1 до N.
+3 -> 1, 8, 27; 5 -> 1, 8, 27, 64, 125  */
 
 int number = ReadInt("Введите число: ");
-int count = number.ToString().Length;
-Console.Write(MakeArray(number, count));
 
+for (int i = 1; i <= number; i++)
+{
+    Console.Write($"{i * i * i}, ");
+}
 
-// ФУНКЦИИ------------------------------------------------------------------------------------------------------
-
-// Функция принимает сообщение для отображения в консоли, и выводит результат введенных данных пользователем.
+// Метод
 int ReadInt(string message)
 {
     Console.Write(message);
     return Convert.ToInt32(Console.ReadLine());
 }
-
-// Функция принимает число введенное пользователем, количество символов, и выводит третью цифру числа. Если 3 цифры нет, сообщает и выводит 0.
-int MakeArray(int a, int b)
-{
-int result = 0;
-    if (b < 3)
-    {
-        Console.Write("Третьей цифры нет, держи: ");
-    }
-    else
-    {
-        int c = 1;
-        for (int i = b; i > 3; i--)
-        {
-            c = c * 10;
-        }
-
-        result = (a / c) % 10;
-    }
-return result;
-}
-
-ача 15
-/*
-Задача 15: 
-Напишите программу, которая принимает на вход цифру, обозначающую день недели, и проверяет, является ли этот день выходным.
-6 -> да
-7 -> да
-1 -> нет
-*/
-
-int dayNumber = ReadInt("Введите число от 1 до 7: ");
-Console.WriteLine(WorkHoliday(dayNumber));
-
-
-// ФУНКЦИИ------------------------------------------------------------------------------------------------------
-
-// Функция принимает сообщение для отображения в консоли, и выводит результат введенных данных пользователем.
-int ReadInt(string message)
-{
-    Console.Write(message);
-    return Convert.ToInt32(Console.ReadLine());
-}
-
-// Функция принимает число от 1 до 7 и выводит сообщение - выходной день или нет.
-// *** Костыль, но я тренировал функции. проблема с return была. ***
-string WorkHoliday(int a)
-{
-    if (a > 0 && a < 8)
-    {
-        if (a == 7 || a == 6)
-        {
-            Console.Write("Под цифрой " + a + " - Выходной");
-        }
-        else
-        {
-            Console.Write("Под цифрой " + a + " - Рабочий");
-        }
-    }
-    else
-    {
-        Console.Write("Вы ввели число не в пределах от 1 до 7, поэтому не возможно определить");
-    }
-    return " день.";
-}
-

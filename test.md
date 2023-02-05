@@ -1,62 +1,84 @@
-//Task 2
+/* Задача 25:
+Напишите цикл, который принимает на вход два числа (A и B) и возводит число A в натуральную степень B.
+3, 5 -> 243 (3⁵);   2, 4 -> 16   */
 
-double LineLength(double x1, double y1, double z1, double x2, double y2, double z2)
+int numberA = ReadInt("Введите число: ");
+int numberB = ReadInt("Введите степень: ");
+ToDegree(numberA, numberB);
+
+
+// Функция возведения в степень
+void ToDegree(int a, int b)
 {
-    double line1Length = x2 - x1;
-    double line2Length = y2 - y1;
-    double line3Length = z2 - z1;
-    double result = Math.Sqrt(Math.Pow(line1Length, 2) + Math.Pow(line2Length, 2) + Math.Pow(line3Length, 2));
-    return result;
-}
-
-Console.Write("Введите координату Х первой точки: ");
-double x1 = Convert.ToDouble(Console.ReadLine());
-Console.Write("Введите координату Y первой точки: ");
-double y1 = Convert.ToDouble(Console.ReadLine());
-Console.Write("Введите координату Z первой точки: ");
-double z1 = Convert.ToDouble(Console.ReadLine());
-Console.Write("Введите координату Х второй точки: ");
-double x2 = Convert.ToDouble(Console.ReadLine());
-Console.Write("Введите координату Y второй точки: ");
-double y2 = Convert.ToDouble(Console.ReadLine());
-Console.Write("Введите координату Z второй точки: ");
-double z2 = Convert.ToDouble(Console.ReadLine());
-
-Console.WriteLine("Длина отрезка: " + Math.Round(LineLength(x1,y1,z1,x2,y2,z2), 2));
-
-//Task 3
-/* bool IsPalindrome(int number)
-{
-    int number1 = number, number2 = 0;
-    while(number1 > 0)
+    int result = 1;
+    for (int i = 1; i <= b; i++)
     {
-        number2 = number2 * 10 + number1 % 10;
-        number1 /= 10;
+        result = result * a;
     }
-    return number2 == number;
+    Console.WriteLine(a + " в степени " + b + " = " + result);
 }
 
-Console.Write("Enter N: ");
-int num = Convert.ToInt32(Console.ReadLine());
-Console.WriteLine($"Число {num} " + (IsPalindrome(num) ? "": "не ") + "является палиндромом.");
-*/
+// Функция ввода
+int ReadInt(string message)
+{
+    Console.WriteLine(message);
+    return Convert.ToInt32(Console.ReadLine());
+}  
 
-
-
-
-
-/* Задача 23
-Напишите программу, которая принимает на вход число (N) и выдаёт таблицу кубов чисел от 1 до N.
-3 -> 1, 8, 27; 5 -> 1, 8, 27, 64, 125  */
+/* Задача 27 Напишите программу, которая принимает на вход число и выдаёт сумму цифр в числе.
+452 -> 11;  82 -> 10;  9012 -> 12   */
 
 int number = ReadInt("Введите число: ");
 
-for (int i = 1; i <= number; i++)
+int len = NumberLen(number);
+SumNumbers(number, len);
+
+// Функция подсчета цифр в числе
+int NumberLen(int a)
 {
-    Console.Write($"{i * i * i}, ");
+    int index = 0;
+    while (a > 0)
+    {
+        a /= 10;
+        index++;
+    }
+    return index;
 }
 
-// Метод
+// Функция вывода суммы цифр в числе
+void SumNumbers(int n, int len)
+{
+    int sum = 0;
+    for (int i = 1; i <= len; i++)
+    {
+        sum += n % 10;
+        n /= 10;
+    }
+    Console.WriteLine($"сумма цифр {sum}");
+}
+
+// Функция ввода
+int ReadInt(string message)
+{
+    Console.Write(message);
+    return Convert.ToInt32(Console.ReadLine());
+}
+
+
+/* Задача 29 Напишите программу, которая задаёт массив из N элементов и выводит их на экран.
+5 -> [1, 2, 5, 7, 19]; 3 -> [6, 1, 33] */
+
+int lenArray = ReadInt("Введите длинну массива: ");
+
+int[] randomArray = new int[lenArray];
+for (int i = 0; i < randomArray.Length; i++)
+{
+    randomArray[i] = new Random().Next(1,9);
+    Console.Write(randomArray[i] + " ");
+}
+
+
+// Функция ввода
 int ReadInt(string message)
 {
     Console.Write(message);
